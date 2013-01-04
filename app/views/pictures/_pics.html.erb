@@ -1,0 +1,66 @@
+<div class='container'>
+  <div class='span5'>
+    <% picture1 = Picture.find_by_id(@r1) %>
+    	<%= picture1.title %>
+    	<% if picture1.url.blank? %>
+    		<%= image_tag picture1.image %>
+    	<% else %>
+    		<%= image_tag picture1.url %>
+		<% end %>
+
+		<strong>Votes: <%= picture1.votes_count %></strong>    		
+
+      <div class='meta'>
+	      <%= link_to time_ago_in_words(picture1.created_at) + ' ago', picture1 %>
+	  	</div>
+            
+      <% if user_signed_in? %>
+        <% if !Vote.where(user_id: current_user.id, picture_id: picture1.id).exists? %>
+          <%= link_to ' | Vote up?', vote_path(picture1), method: :post, data: {confirm: 'Are you sure?'} %> |
+        <% else %>
+          <p>Already voted</p>
+        <% end %>
+      <% end %>
+
+	     <span class='admin'>
+	       <%= link_to "Show", picture1 %>
+          <% if user_signed_in? && picture1.user_id == current_user.id %>
+	         <%= link_to "Edit", edit_picture_path(picture1) %>
+	         <%= link_to "Delete", picture1, method: :delete, data: {confirm: "Are you sure??"} %>
+          <% end %>
+	     </span>
+  </div>
+
+  <div class='span5'>
+  	<% picture2 = Picture.find_by_id(@r2) %>
+  		<%= picture2.title %>
+  		<% if picture2.url.blank? %>
+    		<%= image_tag picture2.image %>
+    	<% else %>
+    		<%= image_tag picture2.url %>
+		<% end %>    
+
+		<strong>Votes: <%= picture2.votes_count %></strong>    		
+
+  		<div class='meta'>
+	    	<%= link_to time_ago_in_words(picture2.created_at) + ' ago', picture2 %>
+		  </div>
+
+      <% if user_signed_in? %>
+        <% if !Vote.where(user_id: current_user.id, picture_id: picture2.id).exists? %>
+          <%= link_to ' | Vote up?', vote_path(picture2), method: :post, data: {confirm: 'Are you sure?'} %> |
+        <% else %>
+          <p>Already voted</p>
+        <% end %>
+      <% end %>
+
+	    <span class='admin'>
+    		<%= link_to "Show", picture2 %>
+        <% if user_signed_in? && picture2.user_id == current_user.id %>
+	        <%= link_to "Edit", edit_picture_path(picture2) %>
+	        <%= link_to "Delete", picture2, method: :delete, data: {confirm: "Are you sure??"} %>
+        <% end %>
+	    </span>
+	</div>
+
+</div>

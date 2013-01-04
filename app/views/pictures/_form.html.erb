@@ -1,0 +1,25 @@
+<%= simple_form_for(@picture) do |f| %>
+  <% if @picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% @picture.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h1>Hello <%=current_user.full_name%></h1>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.input :title, :required => true %>
+  <h4>Upload image or post a URL (don't do both!)</h4>
+  <%= f.input :image %>
+  
+  <%= f.input :url %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

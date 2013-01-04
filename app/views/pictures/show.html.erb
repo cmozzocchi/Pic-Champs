@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+  <p><%= @picture.title %></p>
+  <p>By: <%= @picture.user.full_name %></p>
+  <% if @picture.url.blank? %>
+      <%= image_tag @picture.image %>
+    <% else %>
+      <%= image_tag @picture.url %>
+  <% end %>
+  <p>Votes: <%= @picture.votes_count %></p>
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
