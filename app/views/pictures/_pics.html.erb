@@ -67,7 +67,7 @@
     <div class='votebox span6'>      
       <% if user_signed_in? %>
         <% if !Vote.where(user_id: current_user.id, picture_id: @picture1.id).exists? %>
-          <%= link_to 'Vote up?', vote_path(@picture1), method: :post, :remote => true, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
+          <%= link_to 'Vote up?', vote_path(@picture1), method: :post, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
         <% else %>
           <p class='btn'>Already voted</p>
         <% end %>
@@ -77,7 +77,7 @@
       <div class='votebox span6'>      
       <% if user_signed_in? %>
         <% if !Vote.where(user_id: current_user.id, picture_id: @picture2.id).exists? %>
-          <%= link_to 'Vote up?', vote_path(@picture2), method: :post, :remote => true, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
+          <%= link_to 'Vote up?', vote_path(@picture2), method: :post, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>
         <% else %>
           <p class='btn'>Already voted</p>
         <% end %>
