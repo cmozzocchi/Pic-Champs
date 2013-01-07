@@ -1,6 +1,6 @@
 PicChamps:
 
-PicChamps is a simple Rails app that allows users to create and open accounts, post images via a URL or upload, and vote on which images they think are the best. This was built to test out some early concepts learned at the <a href='http://www.starterleague.com'>Starter League</a>, as well as the process of deploying and sharing the code. You can see the app live on Heroku @ <a href='picchamps.herokuapp.com'>picchamps.herokuapp.com</a>.
+PicChamps is a simple Rails app that allows users to create and open accounts, post images via a URL or upload, and vote on which images they think are the best. This was built to test out some early concepts learned at the link:http://www.starterleague.com, as well as the process of deploying and sharing the code. You can see the app live on Heroku @ link:http://picchamps.herokuapp.com
 
 Feel free to email me with any questions. 
 
