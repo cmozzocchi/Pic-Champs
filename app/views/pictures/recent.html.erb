@@ -1,15 +1,19 @@
 <h1>Recent Pictures</h1>
 
-<ul>
-	<% @pictures_recent.each do |p| %>
-		<li><%= p.title %></li>
-			<% if p.url.blank? %>
-    		<li><%= image_tag p.image %></li>
-    		<% else %>
-    		<li><%= image_tag p.url %></li>
-			<% end %>
-		<li>Votes: <%= p.votes_count %></li>
-		<li><%= link_to time_ago_in_words(p.created_at) + ' ago' + ' |', p %>
-
-	<% end %>
-<ul>
+<div class='container-fluid'>
+  <div class='row-fluid'>
+    <ul class='unstyled'>
+    	<% @pictures_recent.each do |p| %>
+    		<li><strong><%= p.title %></strong>, by: <%= p.user.full_name %></li>
+    			<% if p.url.blank? %>
+        		<li><%= link_to (image_tag p.image), p %></li>
+        		<% else %>
+        		<li><%= link_to (image_tag p.url), p %></li>
+    			<% end %>
+    		<li>Votes: <%= p.votes_count %></li>
+    		<li><%= link_to time_ago_in_words(p.created_at) + ' ago'%></li>
+      </br>
+    	<% end %>
+    <ul>
+  </div>
+</div>

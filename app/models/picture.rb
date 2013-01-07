@@ -1,5 +1,5 @@
 class Picture < ActiveRecord::Base
-  attr_accessible :user_id, :title, :image, :url, :votes
+  attr_accessible :user_id, :title, :image, :url, :votes_count
   
   belongs_to :user
 

@@ -1,45 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>PicChampionships</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-</head>
 
+</head>
 <body>
-  <div class='navbar navbar-fixed-top'>
-    <div class='navbar-inner'>
-      <div class='container'>
-        <a href = '/pictures' class='brand'>PicChampionships </a>
-        <ul class='nav'>
-          <li><%= link_to 'Pic Showdown', pictures_path %></li>
-          <li><%= link_to 'Top Pictures', top_pictures_path %></li>
-          <li><%= link_to 'Recent Pictures', recent_pictures_path %></li>
-        </ul>
-        <ul class='nav pull-right'>
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
-            <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Register", new_user_registration_path %></li>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
-          <% end %>
-        </ul>
-      </div>
+<div id='container'>
+  <div id='body'>
+
+<div class='navbar navbar-fixed-top'>
+  <div class='navbar-inner'>
+    <div class='container'>
+      <%= link_to 'PicChampionships', pictures_path, class: 'brand' %>
+      <ul class='nav'>
+        <li><%= link_to 'Top Pictures', top_pictures_path %></li>
+        <li><%= link_to 'Recent Pictures', recent_pictures_path, class: 'hidden-tablet hidden-phone' %></li>
+      </ul>
+      <ul class='nav pull-right'>
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.full_name, edit_user_registration_path, class: 'hidden-phone' %></li>
+          <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
+</div>
 
-  <div class='container'>
-    <% flash.each do |type, message| %>
-      <div class='alert <%= flash_class type %>'>
-          <button type="button" class="close" data-dismiss="alert">×</button>
-        <%= message %>
-      </div>
-    <% end %>
+<div class='container content'>
+  <% flash.each do |type, message| %>
+    <div class='alert <%= flash_class type %>'>
+        <button type="button" class="close" data-dismiss="alert">×</button>
+      <%= message %>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
 
-<%= yield %>
+</div>
+
+<!-- Footer bar -->
+<div id="footer_bar" class='row-fluid ' >
+  <div id="logo" class='span4'>
+    <h1><a href="#">Pic Champs</a></h1>
   </div>
+  <nav id='navbar'>
+    <ul id="menu">
+      <li><a href='#'>Holder</a></li>
+      <li><a href='#'>Holder</a></li>
+      <li><a href='#'>Holder</a></li>
+    </ul>
+  </nav>
+</div>
 
+</div>
 </body>
 </html>

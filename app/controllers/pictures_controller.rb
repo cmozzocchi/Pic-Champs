@@ -18,6 +18,9 @@ class PicturesController < ApplicationController
     while @r1 == @r2
       @r2 = Picture.first(:offset => rand(Picture.count))
     end
+
+    @picture1 = Picture.find_by_id(@r1)
+    @picture2 = Picture.find_by_id(@r2)
     
     respond_to do |format|
       format.html # index.html.erb
