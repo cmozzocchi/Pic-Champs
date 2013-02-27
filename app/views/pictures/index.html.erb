@@ -2,8 +2,20 @@
   <h2>Photo showdown</h2>
 
     <div class='row-fluid'>
-      <div class='span4'><p>Vote for the top pic here</p></div>
-      <div class='span8'><%= link_to 'New Picture', new_picture_path, class: 'btn btn-inverse pull-right' %></div>
+      <div class='span4'>
+        <% if user_signed_in? %>
+          <p>Vote for the top pic here</p>
+        <% else %>
+          <p>Please register to vote for your favorite photos and add your own!</p>
+        <% end %>
+      </div>
+      <div class='span8'>
+        <% if user_signed_in? %>
+          <%= link_to 'New Picture', new_picture_path, class: 'btn btn-inverse pull-right' %>
+        <% else %>
+          <%= link_to 'Sign in!', new_user_session_path, class: 'btn btn-success pull-right' %>
+        <% end %>
+      </div>
     </div>
 
 </div>
